@@ -1,59 +1,82 @@
+//============ Bind Polyfill
 const person1 = {
     name : "Jane"
 }
-
-function sayHi(){
-    console.log(this.name, "say's Hi");
+function sayHi(country){
+    console.log(this.name, "say's Hi from",country);
 }
-
-//============ Bind Polyfill
-function bindPolyFill(context){
+Function.prototype.myBind1 = function(context,...params){
     context.functionReference = this;
-    return function(...args){
-        context.functionReference(...args);
+    return function(){
+        context.functionReference(...params);
     }
-}
-Function.prototype.myBind = bindPolyFill;
+};
 
-const boundFunction = sayHi.myBind(person1);
-boundFunction();
+Function.prototype.myBind2 = function(objToBeInvoked, ...params){
+    const requiredFunction = this;
+    return function(){
+        requiredFunction.call(objToBeInvoked, ...params);
+    };
+}
+
+const boundFunction1 = sayHi.myBind1(person1,"USA");
+boundFunction1();
 // Output:
-// "Jane" "say's Hi"
+// "Jane say's Hi from USA"
+const boundFunction2 = sayHi.myBind1(person1,"India");
+boundFunction2();
+// Output:
+// "Jane say's Hi from India"
+
+
 
 //============ Call Polyfill
-
 function greet1(country) {
-    return 'Hello, ' + this.name + ' from '+ country;
+    console.log('Hello, ', this.name , '! from ', country);
 }
     
 const person2 = {
     name: 'John',
 };
-
-function callPolyFill(context, ...args){
-    return this.bind(context,...args)();
-}
-Function.prototype.myCall = callPolyFill;
-
-console.log(greet1.myCall(person2, 'India'));
+Function.prototype.myCall1 = function(context, ...params){
+    return this.bind(context,...params)();
+};
+greet1.myCall1(person2, 'Japan');
 // Output:
-// Hello, John! from India
+// Hello, John! from Japan
+
+Function.prototype.myCall2 = function(context, ...params){
+    context.functionToBeCalled = this;
+    context.functionToBeCalled(...params);
+    delete context.functionToBeCalled;
+};
+greet1.myCall2(person2, 'Germany');
+// Output:
+// Hello, John! from Germany
 
 //============ Apply Polyfill
-
 function greet2(country) {
-    return 'Hello, ' + this.name + ' from '+ country;
+    console.log('Hello, ' , this.name , '! from ', country);
 }
     
 const person3 = {
-    name: 'Jane',
+    name: 'Josh',
 };
-function applyPolyFill(context, args){
-    return this.bind(context, ...args)();
-} 
-Function.prototype.myApply = applyPolyFill;
+Function.prototype.myApply1 = function(context, args){
+    this.bind(context, ...args)();
+};
 
-console.log(greet2.myApply(person3, ['USA']));
+greet2.myApply1(person3, ['Russia']);
 // Output:
-// Hello, Jane! from USA
+// Hello, Josh! from Russia
+
+Function.prototype.myApply2 = function(context, args){
+    context.functionToBeCalled = this;
+    context.functionToBeCalled(...args);
+    delete context.functionToBeCalled;
+};
+
+greet2.myApply2(person3, ['Switzerland']);
+// Output:
+// Hello, Josh! from Switzerland
 
