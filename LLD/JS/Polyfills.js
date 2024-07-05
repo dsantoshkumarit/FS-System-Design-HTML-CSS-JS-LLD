@@ -19,14 +19,23 @@ Function.prototype.myBind2 = function(objToBeInvoked, ...params){
     };
 }
 
+Function.prototype.myBind3 = function(objToBeInvoked, ...params){
+    const requiredFunction = this;
+    return ()=>requiredFunction.call(objToBeInvoked, ...params);
+}
+
 const boundFunction1 = sayHi.myBind1(person1,"USA");
 boundFunction1();
 // Output:
 // "Jane say's Hi from USA"
-const boundFunction2 = sayHi.myBind1(person1,"India");
+const boundFunction2 = sayHi.myBind2(person1,"India");
 boundFunction2();
 // Output:
 // "Jane say's Hi from India"
+const boundFunction3 = sayHi.myBind3(person1,"Sri Lanka");
+boundFunction2();
+// Output:
+// "Jane say's Hi from Sri Lanka"
 
 
 
