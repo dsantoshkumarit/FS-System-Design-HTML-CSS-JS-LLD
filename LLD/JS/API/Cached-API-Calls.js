@@ -9,17 +9,17 @@ const cachedAPICall = (timeoutMilliSeconds) => {
         const key = `${url}${JSON.stringify(config)}`;
         const entry = cache[key];
         if (!entry || entry.expiryTime < Date.now()) {
-        try {
-            console.log("New API call");
-            const response = await fetch(url, config);
-            const data = await response.json();
-            cache[key] = {
-            ...data,
-            expiryTime: Date.now() + timeoutMilliSeconds,
-            };
-        } catch (error) {
-            console.log("Error in API call:", error);
-        }
+            try {
+                console.log("New API call");
+                const response = await fetch(url, config);
+                const data = await response.json();
+                cache[key] = {
+                ...data,
+                expiryTime: Date.now() + timeoutMilliSeconds,
+                };
+            } catch (error) {
+                console.log("Error in API call:", error);
+            }
         }
         return cache[key];
     };
