@@ -24,3 +24,28 @@ function fn() {
 
 console.log(fn()()()()(0));
 //output : 4
+
+
+const join = (a, b, c) => {
+    return `${a}_${b}_${c}`
+}
+
+
+function curry(fn) {
+    // your code here
+    return function curried(...args){
+        if(args.length < fn.length){
+            return function(...newArgs){
+                return curried(...args,...newArgs);
+            }
+        }
+        else{
+            return fn(...args);
+        }
+    }
+}
+
+const curriedJoin = curry(join)
+curriedJoin(1, 2, 3) // '1_2_3'
+curriedJoin(1)(2, 3) // '1_2_3'
+curriedJoin(1, 2)(3) // '1_2_3'

@@ -1,4 +1,4 @@
-function main(intervalTime, endTime, message, arr) {
+function main1(intervalTime, endTime, message, arr) {
     function mySetInterval(callback, time) {
         let interval = {
             working: true
@@ -33,7 +33,7 @@ function main(intervalTime, endTime, message, arr) {
         }
     }
 
-    let i = mySetInterval(function () {
+    mySetInterval(function () {
         arr.push(message);
         console.log(arr);
         // [ 'hello' ] 
@@ -50,28 +50,3 @@ function main(intervalTime, endTime, message, arr) {
 let arr = [];
 
 main(1000, 5000, "hello", arr);
-
-
-// function main(intervalTime, endTime, message, arr) {
-//     function mySetInterval(callback, time) {
-//         let interval = {
-//             working: true
-//         };
-
-//         function setter() {
-//             callback();
-//             if (interval.working) setTimeout(setter, time);
-//         }
-//         setTimeout(setter, time);
-//         return interval
-//     }
-
-//     setTimeout(function () {
-//         i.working = false;
-//     }, endTime)
-
-//     let i = mySetInterval(function () {
-//         arr.push(message);
-//     }, intervalTime);
-
-// }

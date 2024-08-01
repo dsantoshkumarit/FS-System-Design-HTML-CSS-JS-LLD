@@ -1,0 +1,20 @@
+body {
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        background: black;
+        color: white;
+        font-family: Papyrus, "Courier New", "Lucida Console";
+    }
+    
+    .star {
+        font-size: 4rem;
+    }
+    
+    .star:hover {
+        cursor: pointer;
+    }
+    
+    .orange {
+        color: #ff9100;
+    }
