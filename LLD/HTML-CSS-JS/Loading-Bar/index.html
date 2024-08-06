@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Navbar Component</title>
+        <style>
+        #navbar-container {
+            border: 1px solid black;
+            height: 10px;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        #navbar {
+            height: 100%;
+            background: green;
+            border-radius: 5px;
+            transition: width 0.5s ease-in-out;
+        }
+        </style>
+    </head>
+
+    <body>
+        <div id="navbar-container">
+        <div id="navbar" style="width: 10%"></div>
+        </div>
+
+        <script>
+        (function () {
+            let intervalTimerId = setInterval(() => {
+                const navbar = document.querySelector("#navbar");
+                const currentWidth = parseInt(navbar.style.width.split("%")[0]);
+                if (currentWidth < 90) {
+                    navbar.style.width = `${currentWidth + (Math.floor(Math.random()*(100-currentWidth)))}%`;
+                }
+                else if (currentWidth < 100 && currentWidth >= 90) {
+                    navbar.style.width = `${currentWidth + (100-currentWidth)}%`;
+                } 
+                else {
+                    clearInterval(intervalTimerId);
+                }
+            }, 1500);
+        })();
+        </script>
+    </body>
+</html>

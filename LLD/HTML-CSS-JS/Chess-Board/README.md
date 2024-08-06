@@ -30,3 +30,6 @@
 ### Optimization:
 - Consider optimizations to improve the performance, like using constants for board size (e.g., 8) instead of hardcoding values.
 - Additionally, encapsulate the code in an IIFE (Immediately Invoked Function Expression) to avoid global variables.
+- Use "data-idx" custom attribute instead of "idx".
+- Use ".red" class and add it or remove it instead of setting "backgroundColor='red'" in JS.
+- Create the chessboard using table row and column
