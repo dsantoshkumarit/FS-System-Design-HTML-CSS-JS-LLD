@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Speed Test</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h1>Click Speed Test</h1>
+    <section class = "clicks-count-timer-container">
+        <h2 data-timer-seconds="1" class = "clicks-count-time">1s</h2>
+        <h2 data-timer-seconds="5" class = "clicks-count-time active">5s</h2>
+        <h2 data-timer-seconds="10" class = "clicks-count-time">10s</h2>
+        <h2 data-timer-seconds="20" class = "clicks-count-time">20s</h2>
+        <h2 data-timer-seconds="30" class = "clicks-count-time">30s</h2>
+        <h2 data-timer-seconds="60" class = "clicks-count-time">60s</h2>
+    </section>
+    <section class = "click-data-section">
+        <section class = "timer-click-data">
+            <section class = "timer">
+                <p class = "title">Time</p>
+                <p class = "title-content" id="time">5s</p>
+            </section>
+            <section class = "clicks-counter">
+                <p class = "title">Clicks</p>
+                <p class = "title-content" id="clicks">0</p>
+            </section>
+        </section>
+        <section class = "clicking-area">
+            <p class = "title">Click anywhere to begin</p>
+        </section>
+    </section>
+    <script src="./index.js" defer></script>
+</body>
+</html>

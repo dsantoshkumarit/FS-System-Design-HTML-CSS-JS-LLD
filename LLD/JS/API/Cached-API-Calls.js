@@ -3,6 +3,11 @@
 // Article Link - https://learnersbucket.com/examples/interview/cached-api-call-with-expiry-time/
 // Youtube Link  - https://www.youtube.com/watch?v=3jrfDk9k8rY&t=181s
 
+/*
+Good to have:
+1. Remove after expiry time.
+2. You can persist in local storage so that even on refresh you can get the value.
+*/
 const cachedAPICall = (timeoutMilliSeconds) => {
     const cache = {};
     return async (url, config = {}) => {
