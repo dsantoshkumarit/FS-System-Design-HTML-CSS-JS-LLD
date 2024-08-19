@@ -49,3 +49,19 @@ const curriedJoin = curry(join)
 curriedJoin(1, 2, 3) // '1_2_3'
 curriedJoin(1)(2, 3) // '1_2_3'
 curriedJoin(1, 2)(3) // '1_2_3'
+
+
+/* 
+    Infinite curry sum :
+    console.log(curriedAdd(1)(2)(3)(4)(); // 10
+*/
+function curriedAdd(a){
+    return function(b){
+        if(b){
+            return curriedAdd(a+b);
+        }
+        else{
+            return a
+        }
+    }
+}

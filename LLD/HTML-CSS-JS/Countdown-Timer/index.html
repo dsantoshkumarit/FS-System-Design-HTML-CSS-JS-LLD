@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <section class="container">
+        <h1 class="container__header">
+            Countdown Timer
+        </h1>
+        <section class="container__labels">
+            <h3 class="container__labels--label">Hours</h3>
+            <h3 class="container__labels--label">Minutes</h3>
+            <h3 class="container__labels--label">Seconds</h3>
+        </section>
+        <section class="container__inputs">
+            <input 
+                class="container__inputs--time hours" 
+                type="number" 
+                placeholder="00" 
+                maxlength="2"
+                oninput="this.value = this.value.slice(0,this.maxLength)"
+            />
+            <p class="container__inputs--colon">:</p>
+            <input 
+                class="container__inputs--time minutes"
+                type="number" 
+                placeholder="00" 
+                maxlength="2"
+                oninput="this.value = this.value.slice(0,this.maxLength)"
+            />
+            <p class="container__inputs--colon">:</p>
+            <input 
+                class="container__inputs--time seconds"
+                type="number" 
+                placeholder="00" 
+                maxlength="2"
+                oninput="this.value = this.value.slice(0,this.maxLength)"
+            />
+        </section>
+        <section class="container__buttons">
+            <button class="container__buttons--btn start">Start</button>
+            <button class="container__buttons--btn pause hide">Pause</button>
+            <button class="container__buttons--btn reset">Reset</button>
+        </section>
+    </section>
+</body>
+<script  src="./script.js"></script>
+</html>
