@@ -62,7 +62,8 @@ input::-webkit-inner-spin-button {
 .container__inputs--colon{
     font-size: 2rem;
     align-self: baseline;
-    line-height: 2rem;
+    font-size : 2.5rem;
+    font-weight : 700;
 }
 
 .container__buttons{

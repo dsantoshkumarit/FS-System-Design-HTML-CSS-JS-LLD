@@ -6,36 +6,79 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Navbar Component</title>
         <style>
-        #navbar-container {
-            border: 1px solid black;
-            height: 10px;
-            padding: 5px;
-            border-radius: 10px;
-        }
-        #navbar {
-            height: 100%;
-            background: green;
-            border-radius: 5px;
-            transition: width 0.5s ease-in-out;
-        }
+            :root{
+                --content : "10%";
+            }
+            body {
+                height : 100vh;
+                display : grid;
+                place-items: center;
+                width : 100%;
+                background: black;
+                color:white;
+            }
+            .loading-section {
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width:100%;
+            }
+            #navbar-container {
+                border: 1px solid white;
+                height: 10px;
+                padding: 5px;
+                border-radius: 10px;
+                width:50%;
+            }
+            #navbar {
+                position:relative;
+                height: 100%;
+                background: #55cd96;
+                border-radius: 5px;
+                transition: width 0.5s ease-in-out;
+            }
+            #navbar::after{
+                content:var(--content);
+                position:relative;
+                top:35px;
+                left:calc(100% - 15px);
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+            #navbar::before{
+                content:"^";
+                position:relative;
+                top:25px;
+                left:calc(100% - 10px);
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
         </style>
     </head>
 
     <body>
-        <div id="navbar-container">
-        <div id="navbar" style="width: 10%"></div>
-        </div>
+        <section class="loading-section">
+            <h3 class>Loading...</h3>
+            <div id="navbar-container">
+                <div id="navbar" style="width: 10%"></div>
+            </div>
+        </section>
 
         <script>
         (function () {
+            const navbar = document.querySelector("#navbar");
             let intervalTimerId = setInterval(() => {
-                const navbar = document.querySelector("#navbar");
                 const currentWidth = parseInt(navbar.style.width.split("%")[0]);
                 if (currentWidth < 90) {
-                    navbar.style.width = `${currentWidth + (Math.floor(Math.random()*(100-currentWidth)))}%`;
+                    const width = currentWidth + (Math.floor(Math.random()*(100-currentWidth)));
+                    navbar.style.width = `${width}%`;
+                    navbar.style.setProperty("--content",`'${width}%'`);
                 }
                 else if (currentWidth < 100 && currentWidth >= 90) {
-                    navbar.style.width = `${currentWidth + (100-currentWidth)}%`;
+                    const width = currentWidth + (100-currentWidth);
+                    navbar.style.width = `${width}%`;
+                    navbar.style.setProperty("--content",`'${width}%'`);
                 } 
                 else {
                     clearInterval(intervalTimerId);

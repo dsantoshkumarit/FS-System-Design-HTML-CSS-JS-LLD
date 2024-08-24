@@ -32,4 +32,5 @@
 - Additionally, encapsulate the code in an IIFE (Immediately Invoked Function Expression) to avoid global variables.
 - Use "data-idx" custom attribute instead of "idx".
 - Use ".red" class and add it or remove it instead of setting "backgroundColor='red'" in JS.
-- Create the chessboard using table row and column
+- Create the chessboard using table row and column.
+- Use "data-color" to store initial color values. 

@@ -30,6 +30,8 @@ import fetchCountries from "./fetchData.js";
             suggestionsListContainer.replaceChildren(listFragment);
         }
         else{
+            suggestionsListContainer.classList.add('hide');
+            errorLabel.classList.remove('hide');
             return;
         }
     }
