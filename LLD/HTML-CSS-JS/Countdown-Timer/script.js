@@ -1,4 +1,5 @@
 (function(){
+    const inputsContainer = document.querySelector('.container__inputs');
     const hoursInput = document.querySelector('.hours');
     const minutesInput = document.querySelector('.minutes');
     const secondsInput = document.querySelector('.seconds');
@@ -54,6 +55,7 @@
         }
         startButton.classList.add("hide");
         pauseButton.classList.remove("hide");
+        inputsContainer.classList.add("disableInput");
         countDownTimerId = setInterval(changeTime, 1000);
     }
     
@@ -62,6 +64,7 @@
         startButton.classList.remove("hide");
         startButton.textContent = "Continue";
         pauseButton.classList.add("hide");
+        inputsContainer.classList.remove("disableInput");
     }
 
     function resetTimer(){
@@ -73,5 +76,6 @@
         startButton.classList.remove("hide");
         startButton.textContent = "Start";
         pauseButton.classList.add("hide");
+        inputsContainer.classList.remove("disableInput");
     }
 })()

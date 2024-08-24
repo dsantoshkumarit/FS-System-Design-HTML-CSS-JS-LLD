@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 *{
     margin : 0;
     padding : 0;
@@ -46,9 +47,10 @@ body{
 .container__inputs--time{
     outline : none;
     border : none;
-    font-size : 2rem;
+    font-size : 3rem;
     text-align: center;
     width : 10rem;
+    font-family: "Silkscreen", sans-serif;
 }
 
 input::-webkit-outer-spin-button,
@@ -89,4 +91,8 @@ input::-webkit-inner-spin-button {
 
 .hide{
     display : none;
+}
+
+.disableInput{
+    pointer-events: none;
 }
