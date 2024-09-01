@@ -13,6 +13,7 @@
         }
 
         .challenge-section-header{
+            font-size : 2rem;
             text-align: center;
         }
 
@@ -24,31 +25,64 @@
         }
         .challenge-section{
             width: 200px;
-            height : 200px;
+            height : 100px;
             display : flex;
             flex-direction: column;
             flex-wrap : wrap;
             justify-content: center;
             align-items: center;
-            border : 1px solid black;
+            border : 1px solid #6c6c6c;
+            border-radius : 0.5rem;
             padding : 0.5rem;
+            cursor : pointer;
+            transition: box-shadow 0.3s, transform 0.2s ease-in;
+        }
+        .challenge-section:hover{
+            box-shadow: 5px 5px ;
+            transform: translate(-5px,-5px);
+        }
+        .challenge-section-title{
+            text-align: center;
         }
     </style>
 </head>
-<body>
-    <nav>
-        <h1 class="challenge-section-header">Frontend Mini Challenges</h1>
-        <div class="challenge-section-container">
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Chess-Board/index.html">Chess Pieces Visualizer</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Clicks-Speed-Test/index.html">Clicks Speed Test</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Countdown-Timer/index.html">Countdown Timer</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Follow-My-Cursor/index.html">Follow My Cursor</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Loading-Bar/index.html">Loading Bar</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/OTP-Input/index.html">OTP Input</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Star-Rating/index.html">Star Rating</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Type-Ahead-or-Auto-Complete/index.html">Type Ahead/ Auto Complete</a></div>
-            <div class="challenge-section"><a href="./LLD/HTML-CSS-JS/Nested-Comments/index.html">Nested Comments Section</a></div>
-        </div>
-    </nav>
-</body>
+    <body>
+        <nav>
+            <h1 class="challenge-section-header">Frontend Mini Challenges</h1>
+            <div class="challenge-section-container">
+            </div>
+        </nav>
+    </body>
+    <script defer>
+        (function(){
+            const challengesData = [
+                {title : "Chess Pieces Visualizer",link : "./LLD/HTML-CSS-JS/Chess-Board/index.html"},
+                {title : "Clicks Speed Test",link : "./LLD/HTML-CSS-JS/Clicks-Speed-Test/index.html"},
+                {title : "Countdown Timer",link : "./LLD/HTML-CSS-JS/Countdown-Timer/index.html"},
+                {title : "Follow My Cursor",link : "./LLD/HTML-CSS-JS/Follow-My-Cursor/index.html"},
+                {title : "Loading Bar",link : "./LLD/HTML-CSS-JS/Loading-Bar/index.html"},
+                {title : "OTP Input",link : "./LLD/HTML-CSS-JS/OTP-Input/index.html"},
+                {title : "Star Rating",link : "./LLD/HTML-CSS-JS/Star-Rating/index.html"},
+                {title : "Type Ahead/ Auto Complete",link : "./LLD/HTML-CSS-JS/Type-Ahead-or-Auto-Complete/index.html"},
+                {title : "Nested Comments Section",link : "./LLD/HTML-CSS-JS/Nested-Comments/index.html"},
+            ];
+
+            const challengesSectionContainer = document.querySelector(".challenge-section-container");
+
+            window.addEventListener("load", () =>{
+                challengesData.forEach(challenge => {
+                    const challengeSection = document.createElement("section");
+                    const challengeTitle = document.createElement("h3");
+                    challengeTitle.classList.add("challenge-section-title");
+                    challengeTitle.textContent = challenge.title;
+                    challengeSection.classList.add("challenge-section");
+                    challengeSection.addEventListener("click", ()=>{
+                        window.location.href = challenge.link;
+                    });
+                    challengeSection.appendChild(challengeTitle);
+                    challengesSectionContainer.appendChild(challengeSection);
+                });
+            });
+        })()
+    </script>
 </html>

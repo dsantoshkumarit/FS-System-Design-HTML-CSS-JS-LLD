@@ -7,7 +7,7 @@
         <title>Navbar Component</title>
         <style>
             :root{
-                --content : "10%";
+                --content : "0%";
             }
             body {
                 height : 100vh;
@@ -36,7 +36,7 @@
                 height: 100%;
                 background: #55cd96;
                 border-radius: 5px;
-                transition: width 0.5s ease-in-out;
+                transition: width 0.05s ease-in-out;
             }
             #navbar::after{
                 content:var(--content);
@@ -61,7 +61,7 @@
         <section class="loading-section">
             <h3 class>Loading...</h3>
             <div id="navbar-container">
-                <div id="navbar" style="width: 10%"></div>
+                <div id="navbar" style="width: 0%"></div>
             </div>
         </section>
 
@@ -70,20 +70,15 @@
             const navbar = document.querySelector("#navbar");
             let intervalTimerId = setInterval(() => {
                 const currentWidth = parseInt(navbar.style.width.split("%")[0]);
-                if (currentWidth < 90) {
-                    const width = currentWidth + (Math.floor(Math.random()*(100-currentWidth)));
+                if(currentWidth < 100){
+                    const width = currentWidth + 1;
                     navbar.style.width = `${width}%`;
                     navbar.style.setProperty("--content",`'${width}%'`);
                 }
-                else if (currentWidth < 100 && currentWidth >= 90) {
-                    const width = currentWidth + (100-currentWidth);
-                    navbar.style.width = `${width}%`;
-                    navbar.style.setProperty("--content",`'${width}%'`);
-                } 
                 else {
                     clearInterval(intervalTimerId);
                 }
-            }, 1500);
+            }, 50);
         })();
         </script>
     </body>

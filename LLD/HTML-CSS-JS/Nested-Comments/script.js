@@ -37,6 +37,7 @@
 
         const replyInput = document.createElement("input");
         replyInput.setAttribute("class", "reply-input");
+        replyInput.setAttribute("placeholder", "Enter a reply...");
         const replyButton = document.createElement("button");
         replyButton.setAttribute("class", "reply-button");
         replyButton.textContent = "Reply";
