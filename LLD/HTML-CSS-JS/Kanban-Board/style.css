@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height : 100vh;
+    display : flex;
+    flex-direction: column;
+    place-items: center start;
+    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.kanban-board-container{
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap : 2rem;
+}
+
+.kanban-add-todo-container{
+    padding: 2rem;
+    display: flex;
+    gap : 1rem;
+}
+
+.add-todo-input, .add-todo-button{
+    padding : 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    border-radius: 0.25rem;
+}
+
+.add-todo-button{
+    cursor : pointer;
+    width : 100px;
+}
+
+.task-sections-container{
+    padding : 2rem;
+    display : flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap : 2rem;
+}
+
+.task-section{
+    background : rgb(233, 233, 233);
+    width : 30%;
+    min-width: 210px;
+    border-radius : 0.25rem;
+    padding : 1rem;
+    display : flex;
+    flex-direction: column;
+    place-items: center;
+    gap : 1rem;
+    height : fit-content;
+    min-height: 200px;
+}
+
+.task-section-header{
+    text-align: center;
+    margin : 0;
+}
+
+.section-tasks{
+    width : 100%;
+    min-height : inherit;
+    display : flex;
+    flex-direction: column;
+    place-items: center;
+    gap : 1rem;
+}
+
+.task{
+    width : 100%;
+    padding : 0.5rem;
+    background: white;
+    font-size : 1.25rem;
+    font-weight: 500;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    border-radius : 0.25rem;
+    word-wrap: break-word;
+    cursor:grab ;
+}
+
+.task:hover{
+    background: black;
+    color : white;
+}
