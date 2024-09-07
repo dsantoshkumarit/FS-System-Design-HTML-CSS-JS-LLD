@@ -1,0 +1,29 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: #212228;
+    background-image: linear-gradient(#292a30 0.1em, transparent 0.1em), linear-gradient(90deg, #292a30 0.1em, transparent 0.1em);
+    background-size: 4em 4em;
+    display : grid;
+    place-items: start center;
+    font-family :'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1{
+    color : rgba(255, 255, 255, 0.404);
+    user-select: none;
+}
+
+#card {
+    width: 150px;
+    height: 150px;
+    /*   // To position card anywhere we want we use position:fixed */
+    position: fixed;
+    background: #afda9f;
+    border-radius: 0.25em;
+    cursor: grab;
+    top: 20px;
+    left: 20px;
+}
