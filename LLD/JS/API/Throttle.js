@@ -1,13 +1,13 @@
 function throttle(cb, delay = 250) {
     let shouldWait = false
     return (...args) => {
-        if (shouldWait) return
+        if (shouldWait) return;
 
-        cb(...args)
-        shouldWait = true
+        cb(...args);
+        shouldWait = true;
         setTimeout(() => {
-            shouldWait = false
-        }, delay)
+            shouldWait = false;
+        }, delay);
     }
 }
 
