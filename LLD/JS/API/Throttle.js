@@ -56,3 +56,20 @@ Output :
 "First call"
 "Fourth call"
 */
+
+// Throttling "scroll" event:
+const throttle = (func, limit)=>{
+    let lastCall = 0;
+    return (...args)=>{
+        const now = Date.now();
+        if(now - lastCall >= limit){
+            lastCall = now;
+            func(...args);
+        }
+    };
+};
+
+//Executes once every 200ms, reducing the frequency of event handling.
+window.addEventListener("scroll",throttle(()=>{
+    console.log("Scroll event triggered.")
+},200));
