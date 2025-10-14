@@ -66,70 +66,70 @@
 - These are mainly responsible for how classes and objects are composed to form larger structures.
 - These use inheritance to compose interfaces or implementations.
 - Eg : Decorator
-### Decorator:
-- Add behaviour to objects without modifying their structure.
-```js
-    function addLogging(func){
-        return function(...args){
-            console.log(`Arguments: ${args}`);
-            return func(...args);
-        };
-    }
-    const add = (a,b) => a+b;
-    const loggedAdd = addLogging(add);
-    console.log(loggedAdd(3,4));
-    /*
-        Arguments: [3,4]
-        7
-    */ 
-```
+    ### Decorator:
+    - Add behaviour to objects without modifying their structure.
+    ```js
+        function addLogging(func){
+            return function(...args){
+                console.log(`Arguments: ${args}`);
+                return func(...args);
+            };
+        }
+        const add = (a,b) => a+b;
+        const loggedAdd = addLogging(add);
+        console.log(loggedAdd(3,4));
+        /*
+            Arguments: [3,4]
+            7
+        */ 
+    ```
 ## Behavioral Patterns:
 - These are concerned with algorithms and the assignment of responsibilites, patterns of communication between objects. 
 - Eg : Observer, Stratergy
-### Observer:
-- Allow objects to subscribe to changes in another object.
-```js
-    class Subject{
-        constructor(){
-            this.observers = [];
+    ### Observer:
+    - Allow objects to subscribe to changes in another object.
+    ```js
+        class Subject{
+            constructor(){
+                this.observers = [];
+            }
+            subscribe(observer){
+                this.observers.push(observer);
+            }
+            notify(data){
+                this.observers.forEach(observer => observer(data));
+            }
         }
-        subscribe(observer){
-            this.observers.push(observer);
-        }
-        notify(data){
-            this.observers.forEach(observer => observer(data));
-        }
-    }
-    const subj = new Subject();
-    subj.subscribe(data => console.log("Observer 1:",data));
-    subj.subscribe(data => console.log("Observer 2:",data));
-    subj.notify("Data Updated");
-    /*
-        Observer 1: Data Updated
-        Observer 2: Data Updated
-    */
-```
+        const subj = new Subject();
+        subj.subscribe(data => console.log("Observer 1:",data));
+        subj.subscribe(data => console.log("Observer 2:",data));
+        subj.notify("Data Updated");
+        /*
+            Observer 1: Data Updated
+            Observer 2: Data Updated
+        */
+    ```
 
-### Stratergy:
-- Choose an algorithm dynamically based on context.
-```js
-    class StratergyContext{
-        setStratergy(stratergy){
-            this.stratergy = stratergy;
+    ### Stratergy:
+    - Choose an algorithm dynamically based on context.
+    ```js
+        class StratergyContext{
+            setStratergy(stratergy){
+                this.stratergy = stratergy;
+            }
+            executeStratergy(a,b){
+                return this.stratergy(a,b);
+            }
         }
-        executeStratergy(a,b){
-            return this.stratergy(a,b);
-        }
-    }
-    const add = (a,b) => a+b;
-    const multiply = (a,b) => a*b;
-    const context = new StratergyContext();
-    context.setStratergy(add);
-    console.log("Add: ",context.executeStratergy(3,4));
-    context.setStratergy(multiply);
-    console.log("Multiply: ",context.executeStratergy(3,4));
-    /*
-        Add: 7
-        Multiply: 12
-    */
-```
+        const add = (a,b) => a+b;
+        const multiply = (a,b) => a*b;
+        const context = new StratergyContext();
+        context.setStratergy(add);
+        console.log("Add: ",context.executeStratergy(3,4));
+        context.setStratergy(multiply);
+        console.log("Multiply: ",context.executeStratergy(3,4));
+        /*
+            Add: 7
+            Multiply: 12
+        */
+    ```

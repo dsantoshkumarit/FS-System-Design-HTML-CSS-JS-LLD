@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+        The Chrome Speculation Rules API allows developers to declaratively tell the browser   which pages to preload and prerender, providing a near-instant loading experience:
+            => "prefetch" tells the browser to only download the top-level HTML document for a linked page. It doesn’t render the page or fetch its sub-resources. This is less resource-intensive than prerendering but still saves time by having the HTML ready in the cache.
+
+            => "prerender" instructs the browser to not only download a page but also to fully render it in background. This includes fetching all sub-resources like CSS, JavaScript, and images, and executing the JavaScript. When the user clicks the link, the page can be swapped into view almost instantly.
+
+            => "eagerness": "moderate" is interpreted by browsers as: “Start the action 200ms after the user hovers their mouse pointer over a link.” 
+    -->
+    <script type="speculationrules">
+        {
+            "prerender": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }],
+            "prefetch": [{ "where": { "href_matches": "/*" }, "eagerness": "moderate" }]
+        }
+    </script>
+</head>
+<body>
+    <script>
+        /*
+            => Below script is for browsers that doesn't support "speculationrules". 
+            => In order for this script to work on Firefox and Safari, pages should contain a Cache-Control header with a max-age value so that the preloaded page is cached on hover and then reused on link click.
+        */
+        if (!HTMLScriptElement.supports || !HTMLScriptElement.supports('speculationrules')) {
+            const preloadedUrls = {};
+
+            function pointerenterHandler () {
+                if (!preloadedUrls[this.href]) {
+                    preloadedUrls[this.href] = true;
+
+                    const prefetcher = document.createElement('link');
+
+                    prefetcher.as = prefetcher.relList.supports('prefetch') ? 'document' : 'fetch';
+                    prefetcher.rel = prefetcher.relList.supports('prefetch') ? 'prefetch' : 'preload';
+                    prefetcher.href = this.href;
+
+                    document.head.appendChild(prefetcher);
+                }
+            }
+
+            document.querySelectorAll('a[href^="/"]').forEach(item => {
+                item.addEventListener('pointerenter', pointerenterHandler);
+            });
+        }
+    </script>
+
+</body>
+</html>
