@@ -11,3 +11,6 @@
         Function timeTakingOperation() called
     */ 
 ```
+## Difference between >> and >>>:
+- The **>>** operator is the bitwise right shift operator, which shifts bits to the right and fills the leftmost bits with the sign bit (0 for positive numbers and 1 for negative numbers). 
+The **>>>** operator is the zero-fill right shift operator, which shifts bits to the right and fills the leftmost bits with zeros, regardless of the sign of the number.
